@@ -57,13 +57,6 @@ class mpu6050:
       return firstbyte << 8 | secondbyte
     return - (((firstbyte ^ 255) << 8) | (secondbyte ^ 255) + 1)
 
-  def wrap(self, angle, limit):
-    while (angle >  limit):
-      angle -= 2*limit
-    while (angle < -limit): 
-      angle += 2*limit
-    return angle
-
   def setGyroConfig(self, config_num):
     if config_num == 0: # range = +- 250 deg/s
       self.gyro_lsb_to_degsec  = 131.0
@@ -170,9 +163,9 @@ class mpu6050:
 
     dt = time.ticks_diff(time.ticks_ms(), self.preInterval) * 1e-3
 
-    self.angleX = self.wrap(self.filterGyroCoef*(angleAccX + self.wrap(self.angleX +     gyroX*dt - angleAccX,180)) + (1.0-self.filterGyroCoef)*angleAccX,180)
-    self.angleY = self.wrap(self.filterGyroCoef*(angleAccY + self.wrap(self.angleY + sgZ*gyroY*dt - angleAccY, 90)) + (1.0-self.filterGyroCoef)*angleAccY, 90)
-    self.angleZ += gyroZ*dt # not wrapped (to do???)
+    self.angleX = self.filterGyroCoef*(self.angleX + gyroX*dt) + (1 - self.filterGyroCoef)*angleAccX
+    self.angleY = self.filterGyroCoef*(self.angleY + gyroY*dt) + (1 - self.filterGyroCoef)*angleAccY
+    self.angleZ += gyroZ*dt
   
     self.preInterval = time.ticks_ms()
   
