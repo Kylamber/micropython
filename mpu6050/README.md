@@ -5,11 +5,11 @@ This library is using the translated version from rfetick's MPU6050_light librar
 ## Usage
 
 ```python
-# Connecting to the I2C of the MPU6050
+# Connecting to the I2C of the MPU6050.
 i2c = I2C(scl=Pin(22), sda=Pin(21))
 mpu = mpu6050(i2c)
 
-# Calculating the offsets, True for gyro and True for accelerometer
+# Calculating the offsets, True for gyro and True for accelerometer.
 mpu.calcOffsets(1, 1)
 time.sleep(1)
 
@@ -19,7 +19,7 @@ mpu.getAngles()
 # Or if preferred, getting the raw values, returns a json with keys "AcX", "AcY", "AcZ", "Tmp", "GyX", "GyY", "GyZ".
 mpu.getRawData()
 
-# When looping the program, don't forget to update it
+# When looping the program, don't forget to update the values.
 while True:
   mpu.update()
 ```
