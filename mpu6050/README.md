@@ -18,6 +18,10 @@ mpu.getAngles()
 
 # Or if preferred, getting the raw values, returns a json with keys "AcX", "AcY", "AcZ", "Tmp", "GyX", "GyY", "GyZ".
 mpu.getRawData()
+
+# When looping the program, don't forget to update it
+while True:
+  mpu.update()
 ```
 
 ## Problems
