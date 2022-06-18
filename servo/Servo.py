@@ -6,7 +6,8 @@ class Servo:
     """
     
     self.servo = servo
-    # self.set_angle(0)
+    self.servo.freq(50) # setting the frequency to 50 Hz to match the servo
+    # self.set_angle(0) # uncomment if you want to set the angle to 0 every initialization
     
   
   def set_angle(self, angle):
