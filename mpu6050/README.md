@@ -1,6 +1,6 @@
 # MPU6050 
 
-This library is using the translated version from rfetick's MPU6050_light library, https://github.com/rfetick/MPU6050_light, and adamjezek98's MPU6050 code https://github.com/adamjezek98/MPU6050-ESP8266-MicroPython.
+This library is using the translated version from rfetick's MPU6050_light library, https://github.com/rfetick/MPU6050_light, and adamjezek98's MPU6050 code https://github.com/adamjezek98/MPU6050-ESP8266-MicroPython. Tested working on an ESP32 with Micropython firmware.
 
 ## Usage
 
@@ -24,6 +24,10 @@ while True:
   mpu.update()
 ```
 
+## Results
+Using this library and getting the data to Godot, I managed to make this.
+![Result](https://github.com/Kylamber/micropython/raw/main/mpu6050/IMG_0437.gif)
+
 ## Problems
 
-The I2C connection and calibartion code hasn't been tested yet. I do not know if that is the right code to do it. Feel free to correct the code.
+The I2C connection and calibration code hasn't been tested yet. I do not know if that is the right code to do it. Feel free to correct the code.
